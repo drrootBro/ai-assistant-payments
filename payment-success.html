@@ -1,12 +1,253 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>支付成功</title>
-</head>
-<body>
-    <h1>🎉 支付成功！</h1>
-    <p>感谢您的购买，您现在可以使用 AI Assistant 的全部功能了。</p>
-    <p>（如果您需要进一步的验证，可以在此页面使用 JavaScript 获取 URL 中的 Session ID。）</p>
-    <button onclick="window.close()">关闭窗口</button>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Successful</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+      
+      .security-notice {
+        background: #fef3c7;
+        padding: 8px;
+        text-align: center;
+        font-size: 12px;
+        color: #92400e;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+      }
+      
+      .container {
+        background: white;
+        border-radius: 16px;
+        padding: 48px 40px;
+        max-width: 500px;
+        width: 100%;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        animation: slideUp 0.5s ease-out;
+        margin-top: 40px;
+      }
+      
+      @keyframes slideUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      
+      .checkmark {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 24px;
+        background: #10b981;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .checkmark::after {
+        content: "✓";
+        font-size: 48px;
+        color: white;
+        font-weight: bold;
+      }
+      
+      h1 {
+        font-size: 32px;
+        color: #1f2937;
+        margin-bottom: 16px;
+        font-weight: 700;
+      }
+      
+      .message {
+        font-size: 18px;
+        color: #6b7280;
+        margin-bottom: 32px;
+        line-height: 1.6;
+      }
+      
+      .instructions {
+        background: #f3f4f6;
+        border-radius: 12px;
+        padding: 24px;
+        margin-bottom: 24px;
+        text-align: left;
+      }
+      
+      .instructions h2 {
+        font-size: 16px;
+        color: #374151;
+        margin-bottom: 16px;
+        font-weight: 600;
+      }
+      
+      .step {
+        display: flex;
+        align-items: start;
+        margin-bottom: 12px;
+        font-size: 15px;
+        color: #4b5563;
+      }
+      
+      .step:last-child {
+        margin-bottom: 0;
+      }
+      
+      .step-number {
+        background: #667eea;
+        color: white;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 600;
+        margin-right: 12px;
+        flex-shrink: 0;
+      }
+      
+      .step-text {
+        line-height: 1.5;
+        padding-top: 2px;
+      }
+      
+      .highlight {
+        background: #fef3c7;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-weight: 600;
+        color: #92400e;
+      }
+      
+      .button {
+        display: inline-block;
+        background: #667eea;
+        color: white;
+        padding: 12px 32px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 16px;
+        transition: all 0.3s;
+        margin-top: 8px;
+        border: none;
+        cursor: pointer;
+      }
+      
+      .button:hover {
+        background: #5568d3;
+        transform: translateY(-2px);
+      }
+      
+      .footer {
+        font-size: 14px;
+        color: #9ca3af;
+        margin-top: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="security-notice">
+      ✓ Secure payment processed by Stripe • Hosted by Google Apps Script
+    </div>
+    
+    <div class="container">
+      <div class="checkmark"></div>
+      
+      <h1>🎉 Payment Successful!</h1>
+      
+      <p class="message">
+        Thank you! Your premium access has been activated.
+      </p>
+      
+      <div class="instructions">
+        <h2>📋 Next Steps:</h2>
+        
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-text">
+            <strong>Close this window</strong> (click button below)
+          </div>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-text">
+            Return to your <strong>Google Doc</strong>
+          </div>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-text">
+            Open the <span class="highlight">🤖 AI Assistant</span> sidebar
+          </div>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-text">
+            Click <span class="highlight">🔄 Refresh Status</span> at the bottom
+          </div>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">5</div>
+          <div class="step-text">
+            You should see: <strong>"✅ Premium Access • Lifetime"</strong>
+          </div>
+        </div>
+      </div>
+      
+      <button onclick="closeWindow()" class="button">
+        ← Close This Window
+      </button>
+      
+      <p class="footer">
+        Having issues? Refresh the sidebar to update your status.
+      </p>
+    </div>
+    
+    <script>
+      function closeWindow() {
+        // 尝试关闭窗口
+        window.close();
+        
+        // 如果浏览器阻止关闭，显示提示
+        setTimeout(function() {
+          var instruction = document.createElement('div');
+          instruction.style.cssText = 'position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 24px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); z-index: 2000; max-width: 400px; text-align: center;';
+          instruction.innerHTML = '<h3 style="margin-bottom: 12px;">✓ Payment Complete</h3><p>Please close this tab/window manually and return to your Google Doc.</p>';
+          document.body.appendChild(instruction);
+        }, 500);
+      }
+      
+      // 自动倒计时关闭提示
+      setTimeout(function() {
+        var autoCloseMsg = document.createElement('p');
+        autoCloseMsg.style.cssText = 'margin-top: 16px; font-size: 13px; color: #6b7280;';
+        autoCloseMsg.textContent = 'You can close this window now and return to your document.';
+        document.querySelector('.footer').insertAdjacentElement('beforebegin', autoCloseMsg);
+      }, 2000);
+    </script>
+  </body>
 </html>
